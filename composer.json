@@ -1,0 +1,16 @@
+{
+    "name": "jbownds/thrivecart",
+    "require": {
+        "phpunit/phpunit": "^10.4",
+        "phpstan/phpstan": "^1.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.4",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jbownds\\Thrivecart\\": "src/"
+        }
+    }
+}
