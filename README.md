@@ -9,7 +9,7 @@ Development Thrivecart Application
 
 Other useful URLs on DEV:
 
-* https://mailhog.warden.test/
+* https://mailhog.exampleproject.test/
 * https://rabbitmq.exampleproject.test/
 * https://elasticsearch.exampleproject.test/
 
