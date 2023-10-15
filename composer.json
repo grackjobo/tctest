@@ -2,7 +2,10 @@
     "name": "jbownds/thrivecart",
     "require": {
         "phpunit/phpunit": "^10.4",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "slim/slim": "^4.12",
+        "slim/http": "^1.3",
+        "laravel/laravel": "^10.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.4",
