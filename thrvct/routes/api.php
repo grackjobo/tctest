@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\BasketController;
+
+Route::post('/basket/add', [BasketController::class, 'add']);
+Route::get('/basket/total', [BasketController::class, 'total']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
