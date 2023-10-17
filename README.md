@@ -38,20 +38,20 @@ In the below examples `~/Sites/exampleproject` is used as the path. Simply repla
 
  3. Configure composer credentials.
 
-        composer config -f ./webroot/composer.json http-basic.repo.magento.com <username> <password>
+        composer config -f ./webroot/composer.json http-basic.repo.thrivecart.com <username> <password>
 
      If you don't have `composer` installed on the host machine, manually create `webroot/auth.json` using the following template:
 
         {
             "http-basic": {
-                "repo.magento.com": {
+                "repo.thrivecart.com": {
                     "username": "<username>",
                     "password": "<password>"
                 }
             }
         }
 
- 4. Run the init script to bootstrap the environment, starting the containers and mutagen sync (on macOS), installing the database (or importing if `--db-dump` is specified), and creating the local admin user for accessing the Magento backend.
+ 4. Run the init script to bootstrap the environment, starting the containers and mutagen sync (on macOS), installing the database (or importing if `--db-dump` is specified), and creating the local admin user for accessing the thrivecart backend.
 
         warden bootstrap --clean-install
 
