@@ -15,7 +15,7 @@ public function up()
         $table->id();
         $table->string('code')->unique();
         $table->string('name');
-        $table->decimal('price', 8, 2);
+        $table->decimal('price', 15, 2);
         $table->timestamps();
     });
 }
