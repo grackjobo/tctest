@@ -28,28 +28,8 @@ Other useful URLs on DEV:
 In the below examples `~/Sites/exampleproject` is used as the path. Simply replace this with whatever path you will be running this project from. It is recommended however to deploy the project locally to a case-sensitive volume.
 
  1. Clone the project codebase.
-
-        git clone -b develop git@github.com:<GITHUB_ACCOUNT>/<REPOSITORY_NAME>.git \
-            ~/Sites/exampleproject
-
- 2. Change into the project directory.
-
-        cd ~/Sites/exampleproject
-
- 3. Configure composer credentials.
-
-        composer config -f ./webroot/composer.json http-basic.repo.thrivecart.com <username> <password>
-
-     If you don't have `composer` installed on the host machine, manually create `webroot/auth.json` using the following template:
-
-        {
-            "http-basic": {
-                "repo.thrivecart.com": {
-                    "username": "<username>",
-                    "password": "<password>"
-                }
-            }
-        }
+ 2. Foo
+ 3. Bar
 
  4. Run the init script to bootstrap the environment, starting the containers and mutagen sync (on macOS), installing the database (or importing if `--db-dump` is specified), and creating the local admin user for accessing the thrivecart backend.
 
