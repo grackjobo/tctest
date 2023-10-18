@@ -1,0 +1,1 @@
+vendor/bin/phpstan --memory-limit=1G analyse -l 1 .

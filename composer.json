@@ -9,7 +9,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^10.4",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "timwassenburg/laravel-service-generator": "^1.0"
     },
     "autoload": {
         "psr-4": {
