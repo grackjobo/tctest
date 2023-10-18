@@ -8,7 +8,7 @@
 - [x] Docker
 - [x] Docker Compose
 - [ ] Dependency Injection
-- [x] Strategy Patternb 
+- [x] Strategy Pattern (tim s laravel service gnerator). 
 - [x] Sensible types 
 - [x] Source control and code review
 - [x] Good separation/encapsulation
@@ -17,6 +17,7 @@
 - [ ] Type hinting: Return Values
 - [ ] Type hinting: Collections
 - [ ] Github enviornment: Add php to lint.yaml in github workflow
+- [ ] Fix github worflow
 
 
 Development Thrivecart Application
@@ -46,8 +47,6 @@ Other useful URLs on DEV:
 In the below examples `~/Sites/exampleproject` is used as the path. Simply replace this with whatever path you will be running this project from. It is recommended however to deploy the project locally to a case-sensitive volume.
 
  1. Clone the project codebase.
- 2. Foo
- 3. Bar
 
  5. Load the site in your browser using the links and credentials taken from the init script output. 
 
