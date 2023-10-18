@@ -8,7 +8,7 @@
 - [x] Docker
 - [x] Docker Compose
 - [ ] Dependency Injection
-- [x] Strategy Pattern
+- [x] Strategy Patternb 
 - [x] Sensible types 
 - [x] Source control and code review
 - [x] Good separation/encapsulation
@@ -16,6 +16,7 @@
 - [ ] Type hinting: Return Params
 - [ ] Type hinting: Return Values
 - [ ] Type hinting: Collections
+- [ ] Github enviornment: Add php to lint.yaml in github workflow
 
 
 Development Thrivecart Application
