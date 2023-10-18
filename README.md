@@ -13,6 +13,9 @@
 - [x] Source control and code review
 - [x] Good separation/encapsulation
 - [x] Small accurate interfaces
+- [ ] Type hinting: Return Params
+- [ ] Type hinting: Return Values
+- [ ] Type hinting: Collections
 
 
 Development Thrivecart Application
