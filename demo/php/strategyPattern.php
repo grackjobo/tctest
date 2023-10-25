@@ -4,33 +4,67 @@ interface CalculateTotalCostStrategy {
 	public function calculate(array $items): int;
 }
 
-Class DiscountCodeStrategy implements CalculateTotalCostStrategy {
+interface DiscountRule {
+    public function appliesTo(Product $product): bool;
+    public function getDiscountAmount(int $count, int $productPrice): int;
+}
+
+class RedWidgetDiscountRule implements DiscountRule {
+    private string $productCode;
+    private int $discountQuantityThreshold;
+    private float $discountFraction;
+
+    public function __construct(string $productCode = 'R01', int $discountQuantityThreshold = 2, float $discountFraction = 0.5) {
+        $this->productCode = $productCode;
+        $this->discountQuantityThreshold = $discountQuantityThreshold;
+        $this->discountFraction = $discountFraction;
+    }
+
+    public function appliesTo(Product $product): bool {
+        return $product->getCode() === $this->productCode;
+    }
+
+    public function getDiscountAmount(int $count, int $productPrice): int {
+        if ($count >= $this->discountQuantityThreshold) {
+            return ceil($productPrice * $this->discountFraction);
+        }
+        return 0;
+    }
+}
+
+class DiscountCodeStrategy implements CalculateTotalCostStrategy {
+    private DiscountRule $discountRule;
+
+    public function __construct(DiscountRule $discountRule) {
+        $this->discountRule = $discountRule;
+    }
+
     public function calculate(array $items): int {
-        $redWidgetCount = 0;
         $totalCost = 0;
+        $discountAmount = 0;
+        $redWidgetCount = 0;
 
         /** @var Product $item */
         foreach ($items as $item) {
             $totalCost += $item->getPrice();
 
-            if ($item->getCode() === 'R01') {
+            if ($this->discountRule->appliesTo($item)) {
                 $redWidgetCount++;
             }
         }
 
-        // Calculate the discount for every two Red Widgets
-        $redWidgetDiscountAmount = 0;
+        $redWidgetCountCopy = $redWidgetCount;
+
         foreach ($items as $item) {
-            if ($item->getCode() === 'R01' && $redWidgetCount >= 2) {
-                $redWidgetDiscountAmount += ceil($item->getPrice() / 2);
-                $redWidgetCount -= 2;
+            if ($this->discountRule->appliesTo($item) && $redWidgetCountCopy >= 2) {
+                $discountAmount += $this->discountRule->getDiscountAmount($redWidgetCountCopy, $item->getPrice());
+                $redWidgetCountCopy -= 2;
             }
         }
 
-        return $totalCost - $redWidgetDiscountAmount;
+        return $totalCost - $discountAmount;
     }
 }
-
 
 class ShippingCostStrategy implements CalculateTotalCostStrategy {
 	/** @var DeliveryRule[] */
@@ -140,26 +174,28 @@ $deliveryRules = [
 	new DeliveryRule(0, 495)
 ];
 
+// Use Dependency Injection for discount rule
+$redWidgetDiscount = new RedWidgetDiscountRule();
 
 // Scenario 1: B1+G1
 $basket1 = new Basket($products, $deliveryRules);
 $basket1->addProductByCode('B01');
 $basket1->addProductByCode('G01');
-echo "Total for B01, G01 (37.85)$" . number_format(($basket1->calculateTotalCost(new DiscountCodeStrategy()) + $basket1->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
+echo "Total for B01, G01 (37.85)$" . number_format(($basket1->calculateTotalCost(new DiscountCodeStrategy($redWidgetDiscount)) + $basket1->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
 echo "\n";
 
 // Scenario 2: R01, R01
 $basket2 = new Basket($products, $deliveryRules);
 $basket2->addProductByCode('R01');
 $basket2->addProductByCode('R01');
-echo "Total for 01, R01: (54.37)$" . number_format(($basket2->calculateTotalCost(new DiscountCodeStrategy()) + $basket2->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
+echo "Total for R01, R01 (54.37)$" . number_format(($basket2->calculateTotalCost(new DiscountCodeStrategy($redWidgetDiscount)) + $basket2->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
 echo "\n";
 
 // Scenario 3: R01, G01
 $basket3 = new Basket($products, $deliveryRules);
 $basket3->addProductByCode('R01');
 $basket3->addProductByCode('G01');
-echo "Total for R01, G01:(60.85) $" . number_format(($basket3->calculateTotalCost(new DiscountCodeStrategy()) + $basket3->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
+echo "Total for R01, G01 (60.85)$" . number_format(($basket3->calculateTotalCost(new DiscountCodeStrategy($redWidgetDiscount)) + $basket3->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
 echo "\n";
 
 // Scenario 4: B01, B01, R01, R01, R01
@@ -169,7 +205,6 @@ $basket4->addProductByCode('B01');
 $basket4->addProductByCode('R01');
 $basket4->addProductByCode('R01');
 $basket4->addProductByCode('R01');
-echo "Total for B01, B01, R01, R01, R01: (98.27)$" . number_format(($basket4->calculateTotalCost(new DiscountCodeStrategy()) + $basket4->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
+echo "Total for B01, B01, R01, R01, R01 (98.27)$" . number_format(($basket4->calculateTotalCost(new DiscountCodeStrategy($redWidgetDiscount)) + $basket4->calculateTotalCost(new ShippingCostStrategy($deliveryRules))) / 100, 2) . "\n";
 echo "\n";
 ?>
-TEst!
