@@ -1,23 +1,29 @@
 <center><img width="690" alt="image" src="https://github.com/grackjobo/tctest/assets/79042620/5829d296-b176-40a6-abed-40b589832543"></center>
 
+
+
+
 ### To Do 
 
 - [x] Composer
-- [ ] PHPUnit (Unit and integration tests)
+- [x] PHPUnit (Unit and integration tests)
 - [x] PHPStan
 - [x] Docker
 - [x] Docker Compose
-- [ ] Dependency Injection
-- [x] Strategy Pattern (tim s laravel service gnerator). 
+- [x] Dependency Injection
+- [x] Strategy Pattern 
 - [x] Sensible types 
 - [x] Source control and code review
 - [x] Good separation/encapsulation
 - [x] Small accurate interfaces
-- [ ] Type hinting: Return Params
-- [ ] Type hinting: Return Values
-- [ ] Type hinting: Collections
+- [x] Type hinting: Return Params
+- [x] Type hinting: Return Values
 - [ ] Github enviornment: Add php to lint.yaml in github workflow
 - [ ] Fix github worflow
+- [ ] Move code to laravel structure
+- [ ] Move phpunit cases to laravel
+- [ ] Add interfaces for each category to avoid overloading
+
 
 
 Development Thrivecart Application
