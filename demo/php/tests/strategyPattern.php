@@ -93,19 +93,19 @@ $shippingStrategy = new ShippingCostStrategy($deliveryRules);
 $basket1 = new Basket($products, $deliveryRules);
 $basket1->addProductByCode('B01');
 $basket1->addProductByCode('G01');
-echo "Total for B01, G01: " . number_format($basket1->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
+//echo "Total for B01, G01: " . number_format($basket1->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
 
 // Scenario 2: R01, R01
 $basket2 = new Basket($products, $deliveryRules);
 $basket2->addProductByCode('R01');
 $basket2->addProductByCode('R01');
-echo "Total for R01, R01: " . number_format($basket2->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
+//echo "Total for R01, R01: " . number_format($basket2->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
 
 // Scenario 3: R01, G01
 $basket3 = new Basket($products, $deliveryRules);
 $basket3->addProductByCode('R01');
 $basket3->addProductByCode('G01');
-echo "Total for R01, G01: " . number_format($basket3->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
+//echo "Total for R01, G01: " . number_format($basket3->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
 
 // Scenario 4: B01, B01, R01, R01, R01
 $basket4 = new Basket($products, $deliveryRules);
@@ -114,5 +114,5 @@ $basket4->addProductByCode('B01');
 $basket4->addProductByCode('R01');
 $basket4->addProductByCode('R01');
 $basket4->addProductByCode('R01');
-echo "Total for B01, B01, R01, R01, R01: " . number_format($basket4->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
+//echo "Total for B01, B01, R01, R01, R01: " . number_format($basket4->calculateTotalCostWithShipping($discountStrategy, $shippingStrategy) / 100, 2) . "\n";
 
