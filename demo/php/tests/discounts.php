@@ -1,5 +1,10 @@
-
 <?php
+
+interface DiscountRule {
+    public function appliesTo(Product $product): bool;
+    public function getDiscountAmount(int $count, int $productPrice): int;
+}
+
 class RedWidgetDiscountRule implements DiscountRule {
     private string $productCode;
     private int $discountQuantityThreshold;
@@ -17,10 +22,14 @@ class RedWidgetDiscountRule implements DiscountRule {
 
     public function getDiscountAmount(int $count, int $productPrice): int {
         if ($count >= $this->discountQuantityThreshold) {
-            return ceil($productPrice * $this->discountFraction);
+            return (int) ceil($productPrice * $this->discountFraction);
         }
         return 0;
     }
+}
+
+interface CalculateTotalCostStrategy {
+    public function calculate(array $items): int;
 }
 
 class DiscountCodeStrategy implements CalculateTotalCostStrategy {
@@ -30,6 +39,12 @@ class DiscountCodeStrategy implements CalculateTotalCostStrategy {
         $this->discountRule = $discountRule;
     }
 
+    /**
+     * Calculate the total cost after applying discount.
+     * The discount logic needs to be moved to a separate class but there's an interdependency between the discount logic and the shipping logic.  
+     * @param Product[] $items An array of Product objects
+     * @return int The total cost
+     */
     public function calculate(array $items): int {
         $totalCost = 0;
         $discountAmount = 0;
@@ -53,3 +68,7 @@ class DiscountCodeStrategy implements CalculateTotalCostStrategy {
         return $totalCost - $discountAmount;
     }
 }
+
+// Assuming a Product class exists, it must at least implement the following methods:
+// - getPrice(): int
+// - getCode(): string
