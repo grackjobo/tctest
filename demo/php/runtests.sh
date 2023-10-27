@@ -1,4 +1,6 @@
-phpunit tests/b1g1.php
-phpunit tests/r1andg1.php
-phpunit tests/r1andr1test.php
-phpunit tests/b1b1r1r1r1.php
+phpunit tests/test1.php
+phpunit tests/test2.php
+phpunit tests/test3.php
+phpunit tests/test4.php
+
+php demo.php
