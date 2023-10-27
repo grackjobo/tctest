@@ -7,7 +7,7 @@ require_once 'shipping.php';
 use PHPUnit\Framework\TestCase;
 
 
-class r1andr1test extends TestCase {
+class test2 extends TestCase {
     private $products;
     private $deliveryRules;
 

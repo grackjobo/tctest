@@ -6,7 +6,7 @@ require_once 'shipping.php';
 
 use PHPUnit\Framework\TestCase;
 
-class B1B1R1R1R1 extends TestCase {
+class test4 extends TestCase {
     public function testBasketWithB01B01R01R01R01() {
         // Setup
         $products = [

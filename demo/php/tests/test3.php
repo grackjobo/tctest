@@ -9,7 +9,7 @@ require_once 'shipping.php';
 use PHPUnit\Framework\TestCase;
 
 
-class r1andg1 extends TestCase {
+class test3 extends TestCase {
     private $products;
     private $deliveryRules;
 
