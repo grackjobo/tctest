@@ -22,7 +22,6 @@ Created several interfaces to avoid overloading just one with strategies for car
 - [ ] Fix github worflow
 - [ ] Move code to laravel structure
 - [ ] Move phpunit cases to laravel
-- [ ] Add interfaces for each category to avoid overloading
 
 Notes: 
 
