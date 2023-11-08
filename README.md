@@ -1,4 +1,4 @@
-Created several interfaces to avoid overloading just one with strategies for cart, discount and shipping. Wrote tests and reviewed stan. 
+This began as a coding exercise to create a shopping cart with simple php using interfaces for discounts and shipping and ensuring totals were correct. I'm now pushing the cart into laravel and creating outbound calls to GPTplus eCommerce to inform the cusotmer experience and pricing determination. 
 
 ### To Do 
 
