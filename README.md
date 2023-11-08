@@ -23,7 +23,7 @@ Created several interfaces to avoid overloading just one with strategies for car
 Notes: 
 
 
-Development Thrivecart Application
+Development Shopping Cart Application
 ========================================================
 
 | Env | FrontURL | AdminURL |
