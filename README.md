@@ -1,6 +1,3 @@
-<center><img width="690" alt="image" src="https://github.com/grackjobo/tctest/assets/79042620/5829d296-b176-40a6-abed-40b589832543"></center>
-
-
 Created several interfaces to avoid overloading just one with strategies for cart, discount and shipping. Wrote tests and reviewed stan. 
 
 ### To Do 
